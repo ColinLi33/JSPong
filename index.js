@@ -9,5 +9,5 @@ app.use(express.static('p5'))
 }) */
 
 app.get('/', function (req, res) {
-  res.render(__dirname + '/p5/index.html');
+  res.render(__dirname + '/index.html');
 })
