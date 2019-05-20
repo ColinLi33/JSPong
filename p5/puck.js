@@ -4,8 +4,8 @@
   function Puck(){
     this.x = widthWindow  / 2;
     this.y = heightWindow / 2;
-    this.xspeed = 10; //never negative
-    this.yspeed = -10; //offset stuff
+    this.xspeed = 11; //never negative
+    this.yspeed = -11; //offset stuff
     this.r = 12;
     this.dir = (3 * PI / 4); // [0, 2pi)
     this.section;
