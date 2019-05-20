@@ -22,6 +22,10 @@ function mouseClicked(){
   }
 }
 
+function getDifficulty(){
+  return difficulty;
+}
+
 function keyPressed(){
   if (keyCode === LEFT_ARROW && difficulty > 0 && screen == 0) {
     difficulty -= 1;

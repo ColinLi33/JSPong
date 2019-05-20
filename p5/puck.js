@@ -6,11 +6,11 @@
     this.y = heightWindow / 2;
     this.xspeed = 12; //never negative
     this.yspeed = -12; //offset stuff
-    if(pong.difficulty == 0){
+    if(getDifficulty() == 0){
       this.xspeed = 8;
       this.yspeed = -8;
     }
-    else if(pong.difficulty == 2){
+    else if(getDifficulty() == 2){
       this.xspeed = 15;
       this.yspeed = -15;
     }
