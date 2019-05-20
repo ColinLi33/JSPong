@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-console.log(app);
 app.use(express.static('p5'))
 
 app.listen(process.env.PORT || 3000, function(){

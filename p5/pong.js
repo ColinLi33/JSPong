@@ -17,6 +17,8 @@ function setup(){
 function mouseClicked(){
   if(screen == 0){
     screen = 1;
+  } else if(screen == 2 || screen == 3){
+    screen = 0;
   }
 }
 
@@ -68,5 +70,19 @@ function draw(){
     textSize(32);
     text(puck.playerScore, 35, 30);
     text(puck.computerScore, width - 35, 30);
+    puck.checkScore();
+  } else if (screen == 2) {
+    background(25);
+    textSize(60);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("You Win!\nClick to play again", width/2, height/2);
+
+  } else if (screen == 3) {
+    background(25);
+    textSize(60);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("You Lose!\nClick to play again", width/2, height/2);
   }
 }

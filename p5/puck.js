@@ -49,6 +49,14 @@
       }
     }
 
+    this.checkScore = function(){
+      if(this.playerScore == 10){
+        pong.screen = 2;
+      } else if(this.computerScore == 10){
+        pong.screen = 3;
+      }
+    }
+
     this.hitTopOrBottom = function(){
     //  xspeed++;
       //yspeed--;
@@ -69,6 +77,7 @@
         }else if(puckY > paddleY + 30 && puckY <= paddleY + 50){ //81-100
           this.dir = 5 * PI / 3 + this.dir * .1;
         }
+          this.x = p.x + p.w/2 + this.r;
 
       } else {
       //  this.x = p.x - p.w - 2;
@@ -83,7 +92,7 @@
         }else if(puckY > paddleY + 30 && puckY <= paddleY + 50){ //81-100
           this.dir = 4 * PI / 3 + this.dir * .1;
         }
-
+        this.x = p.x - p.w/2 - this.r;
       }
 
     }
