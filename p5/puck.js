@@ -1,6 +1,7 @@
   const PI = Math.PI;
   var widthWindow = 1200;
   var heightWindow = 600;
+
   function Puck(){
     this.x = widthWindow  / 2;
     this.y = heightWindow / 2;
@@ -59,9 +60,9 @@
 
     this.checkScore = function(){
       if(this.playerScore == 10){
-        pong.screen = 2;
+        setScreen(2);
       } else if(this.computerScore == 10){
-        pong.screen = 3;
+        setScreen(3);
       }
     }
 
