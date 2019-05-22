@@ -90,8 +90,7 @@
           this.dir = PI / 3 + this.dir * -.1;
         }else if(puckY > paddleY - 30 && puckY <= paddleY - 10){ //21-40
           this.dir = PI / 6 + this.dir * -.1;
-        }else if(puckY > pad
-          dleY - 10 && puckY <= paddleY + 10){ //41-60
+        }else if(puckY > paddleY - 10 && puckY <= paddleY + 10){ //41-60
           this.dir = 0 + this.dir * -.1;
         }else if(puckY > paddleY + 10 && puckY <= paddleY + 30){ //61-80
           this.dir = -PI / 6 + this.dir * .1;
