@@ -99,7 +99,7 @@
         if (this.dir >= 1.308)
           this.dir = 1.308;
         this.x = p.x + p.w/2 + this.r;
-          
+
 
       } else {
       //  this.x = p.x - p.w - 2;
