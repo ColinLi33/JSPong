@@ -13,6 +13,11 @@
     this.playerScore = 0;
     this.computerScore = 0;
 
+    this.startGame = function(){
+      this.playerScore = 0;
+      this.computerScore = 0;
+    }
+
     this.setSpeed = function(){
       if(getDifficulty() == 0){
         this.xspeed = 8;

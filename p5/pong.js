@@ -12,7 +12,7 @@ function setup(){
   player = new Paddle(true);
   computer = new Paddle(false);
   puck = new Puck();
-  png = loadImage("greenline.png");
+  puck.startGame();
 }
 
 function mouseClicked(){
@@ -34,6 +34,7 @@ function setScreen(screen){
 function getScreen(){
   return screenS;
 }
+
 
 function keyPressed(){
   if (keyCode === LEFT_ARROW && difficulty > 0 && screenS == 0) {
@@ -67,38 +68,41 @@ function draw(){
     }
     puck.setSpeed();
   } else if (screenS == 1) {
-    background(0);
-    image(png, 0, 0);
-    puck.isTouching(player);
-    puck.isTouching(computer);
+      background(0);
+      fill('rgb(0,255,0)');
+      rectMode(CENTER);
+      for(let i = 0; i < 8; i++){
+        rect(widthWindow / 2, heightWindow / 7.38 * i + 15, 10, 30);
+      }
+      puck.isTouching(player);
+      puck.isTouching(computer);
+      player.show();
+      computer.show();
+      player.move();
 
-    player.show();
-    computer.show();
+      if(Math.cos(puck.dir) >= 0){
+        computer.AI(difficulty, puck);
+      }
 
-    player.move();
-    if(Math.cos(puck.dir) >= 0){
-      computer.AI(difficulty, puck);
-    }
-
-    puck.show();
-    puck.isOnEdge();
-    puck.move();
-    textSize(32);
-    text(puck.playerScore, 35, 30);
-    text(puck.computerScore, width - 35, 30);
-    puck.checkScore();
+      puck.show();
+      puck.isOnEdge();
+      puck.move();
+      textSize(32);
+      text(puck.playerScore, 35, 30);
+      text(puck.computerScore, width - 35, 30);
+      puck.checkScore();
   } else if (screenS == 2) {
-    background(25);
-    textSize(60);
-    fill(0);
-    textAlign(CENTER, CENTER);
-    text("You Win!\nClick to play again", width/2, height/2);
+      background(25);
+      textSize(60);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      text("You Win!\nClick to play again", width/2, height/2);
 
   } else if (screenS == 3) {
-    background(25);
-    textSize(60);
-    fill(0);
-    textAlign(CENTER, CENTER);
-    text("You Lose!\nClick to play again", width/2, height/2);
+      background(25);
+      textSize(60);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      text("You Lose!\nClick to play again", width/2, height/2);
   }
 }
