@@ -10,7 +10,7 @@
     this.xspeed = 12; //never negative
     this.yspeed = -12; //offset stuff
     this.r = 12;
-    this.dir = 0;//(3 * PI / 4); // [0, 2pi)
+    this.dir = (3 * PI / 4); //[0, 2pi)
     this.section;
     this.playerScore = 0;
     this.computerScore = 0;
