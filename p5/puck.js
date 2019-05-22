@@ -1,6 +1,8 @@
   const PI = Math.PI;
   var widthWindow = 1200;
   var heightWindow = 600;
+  var numPlayerHits = 0;
+  var numCompHits = 0;
 
   function Puck(){
     this.x = widthWindow  / 2;
@@ -8,7 +10,7 @@
     this.xspeed = 12; //never negative
     this.yspeed = -12; //offset stuff
     this.r = 12;
-    this.dir = (3 * PI / 4); // [0, 2pi)
+    this.dir = 0;//(3 * PI / 4); // [0, 2pi)
     this.section;
     this.playerScore = 0;
     this.computerScore = 0;
@@ -30,8 +32,9 @@
     }
 
     this.show = function(){
-     fill(255);
+     fill('rgb(0, 255, 255)');
      ellipse(this.x,this.y,this.r*2,this.r*2);
+     ellipseMode(CENTER);
     }
     function getY(){
       return this.y;
@@ -83,7 +86,7 @@
     this.direction = function(puckY, paddleY, p){
       if(p === player){
       //  this.x = p.x + p.w + 2;
-        if(puckY >= paddleY - 50 && puckY <= paddleY - 30){ //0-20
+        if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
           this.dir = PI / 3 + this.dir * -.1;
         }else if(puckY > paddleY - 30 && puckY <= paddleY - 10){ //21-40
           this.dir = PI / 6 + this.dir * -.1;
@@ -91,19 +94,19 @@
           this.dir = 0 + this.dir * -.1;
         }else if(puckY > paddleY + 10 && puckY <= paddleY + 30){ //61-80
           this.dir = -PI / 6 + this.dir * .1;
-        }else if(puckY > paddleY + 30 && puckY <= paddleY + 50){ //81-100
+        }else if(puckY > paddleY + 30 && puckY <= paddleY + 53){ //81-100
           this.dir = -PI / 3 + this.dir * .1;
         }
         if(this.dir <= -1.308)
           this.dir = -1.308;
         if (this.dir >= 1.308)
           this.dir = 1.308;
-        this.x = p.x + p.w/2 + this.r;
-          
+      //  this.x = p.x + p.w/2 + this.r;
+
 
       } else {
       //  this.x = p.x - p.w - 2;
-        if(puckY >= paddleY - 50 && puckY <= paddleY - 30){ //0-20
+        if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
           this.dir = 2 * PI / 3 + this.dir * -.1;
         }else if(puckY > paddleY - 30 && puckY <= paddleY - 10){ //21-40
           this.dir = 5 * PI / 6 + this.dir * -.1;
@@ -111,27 +114,31 @@
           this.dir = PI + this.dir * -.1;
         }else if(puckY > paddleY + 10 && puckY <= paddleY + 30){ //61-80
           this.dir = 7 * PI / 6 + this.dir * .1;
-        }else if(puckY > paddleY + 30 && puckY <= paddleY + 50){ //81-100
+        }else if(puckY > paddleY + 30 && puckY <= paddleY + 53){ //81-100
           this.dir = 4 * PI / 3 + this.dir * .1;
         }
         if(this.dir <= PI-1.308)
           this.dir = PI-1.308;
         if (this.dir >= PI+1.308)
           this.dir = 1.308;
-        this.x = p.x - p.w/2 - this.r;
+      //  this.x = p.x - p.w/2 - this.r;
       }
 
     }
 
     this.isTouching = function(p){
       if(p === player){
-        if(this.x - this.r <= p.x + p.w/2 && this.y + this.r < p.y + p.h/2 && this.y - this.r > p.y - p.h/2){
+        if(this.x - this.r  <= p.x + p.w/2 + 15 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
           this.direction(this.y, p.y, p);
+          numPlayerHits++;
+          console.log('playerHit: ' + numCompHits);
         }
       }
       if(p === computer){
-        if(this.x + this.r >= p.x - p.w/2 && this.y + this.r < p.y + p.h/2 && this.y - this.r > p.y - p.h/2){
+        if(this.x + this.r >= p.x - p.w/2 && this.y + this.r < p.y + p.h/2 + 10 && this.y - this.r > p.y - p.h/2 - 10){
           this.direction(this.y, p.y, p);
+          numCompHits++;
+          console.log('computerHit: ' + numCompHits);
         }
       }
     }

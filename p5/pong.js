@@ -47,9 +47,9 @@ function keyPressed(){
 
 function draw(){
   if(screenS == 0){
+    fill('rgb(0,255,0)');
     background(50);
     textSize(60);
-    fill(0);
     textAlign(CENTER, CENTER);
     text("Computer Science Final \nPong \nBy Colin Li & Luke Fahrney \nClick to Start", width/2, heightWindow - 400);
     switch(difficulty){
