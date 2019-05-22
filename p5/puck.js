@@ -17,12 +17,10 @@
       if(getDifficulty() == 0){
         this.xspeed = 8;
         this.yspeed = -8;
-        console.log('test');
       }
       else if(getDifficulty() == 2){
         this.xspeed = 15;
         this.yspeed = -15;
-        console.log('hi');
       }
     }
 
