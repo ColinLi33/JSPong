@@ -10,7 +10,7 @@
     this.xspeed = 12; //never negative
     this.yspeed = -12; //offset stuff
     this.r = 12;
-    this.dir = 0;//(3 * PI / 4); // [0, 2pi)
+    this.dir = (3 * PI / 4); //[0, 2pi)
     this.section;
     this.playerScore = 0;
     this.computerScore = 0;
@@ -102,7 +102,15 @@
         if (this.dir >= 1.308)
           this.dir = 1.308;
         this.x = p.x + p.w/2 + this.r;
+<<<<<<< HEAD
       //  this.x = p.x + p.w/2 + this.r;
+=======
+
+      //  this.x = p.x + p.w/2 + this.r;
+
+
+
+>>>>>>> 0d724ce491cb56e4872de6d69fceeb8cd314a79d
       } else {
       //  this.x = p.x - p.w - 2;
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
@@ -127,14 +135,14 @@
 
     this.isTouching = function(p){
       if(p === player){
-        if(this.x - this.r  <= p.x + p.w/2 + 15 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
+        if(this.x - this.r  <= p.x + p.w/2 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
           this.direction(this.y, p.y, p);
           numPlayerHits++;
           console.log('playerHit: ' + numCompHits);
         }
       }
       if(p === computer){
-        if(this.x + this.r >= p.x - p.w/2 - 15 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
+        if(this.x + this.r >= p.x - p.w/2 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
           this.direction(this.y, p.y, p);
           numCompHits++;
           console.log('computerHit: ' + numCompHits);
