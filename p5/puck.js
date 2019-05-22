@@ -1,16 +1,30 @@
   const PI = Math.PI;
   var widthWindow = 1200;
   var heightWindow = 600;
+
   function Puck(){
     this.x = widthWindow  / 2;
     this.y = heightWindow / 2;
-    this.xspeed = 10; //never negative
-    this.yspeed = -10; //offset stuff
+    this.xspeed = 12; //never negative
+    this.yspeed = -12; //offset stuff
     this.r = 12;
     this.dir = (3 * PI / 4); // [0, 2pi)
     this.section;
     this.playerScore = 0;
     this.computerScore = 0;
+
+    this.setSpeed = function(){
+      if(getDifficulty() == 0){
+        this.xspeed = 8;
+        this.yspeed = -8;
+        console.log('test');
+      }
+      else if(getDifficulty() == 2){
+        this.xspeed = 15;
+        this.yspeed = -15;
+        console.log('hi');
+      }
+    }
 
     this.show = function(){
      fill(255);
@@ -49,6 +63,14 @@
       }
     }
 
+    this.checkScore = function(){
+      if(this.playerScore == 10){
+        setScreen(2);
+      } else if(this.computerScore == 10){
+        setScreen(3);
+      }
+    }
+
     this.hitTopOrBottom = function(){
     //  xspeed++;
       //yspeed--;
@@ -69,6 +91,7 @@
         }else if(puckY > paddleY + 30 && puckY <= paddleY + 50){ //81-100
           this.dir = 5 * PI / 3 + this.dir * .1;
         }
+          this.x = p.x + p.w/2 + this.r;
 
       } else {
       //  this.x = p.x - p.w - 2;
@@ -83,7 +106,7 @@
         }else if(puckY > paddleY + 30 && puckY <= paddleY + 50){ //81-100
           this.dir = 4 * PI / 3 + this.dir * .1;
         }
-
+        this.x = p.x - p.w/2 - this.r;
       }
 
     }

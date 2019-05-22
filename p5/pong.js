@@ -4,7 +4,7 @@ var computer;
 var difficulty = 1;
 var widthWindow = 1200;
 var heightWindow = 600;
-var screen = 0; //screen = 0 = start , screen = 1 = game
+var screenS = 0; //screen = 0 = start , screen = 1 = game, 2 = win, 3 = loss
 
 function setup(){
   createCanvas(widthWindow, heightWindow);
@@ -15,21 +15,36 @@ function setup(){
 }
 
 function mouseClicked(){
-  if(screen == 0){
-    screen = 1;
+  if(screenS == 0){
+    screenS = 1;
+  } else if(screenS == 2 || screenS == 3){
+    screenS = 0;
   }
 }
 
+function getDifficulty(){
+  return difficulty;
+}
+
+function setScreen(screen){
+  screenS = screen;
+}
+
+function getScreen(){
+  return screenS;
+}
+
 function keyPressed(){
-  if (keyCode === LEFT_ARROW && difficulty > 0 && screen == 0) {
+  if (keyCode === LEFT_ARROW && difficulty > 0 && screenS == 0) {
     difficulty -= 1;
-  } else if (keyCode === RIGHT_ARROW && difficulty < 2 && screen == 0) {
+  } else if (keyCode === RIGHT_ARROW && difficulty < 2 && screenS == 0) {
     difficulty += 1;
+    console.log(difficulty);
   }
 }
 
 function draw(){
-  if(screen == 0){
+  if(screenS == 0){
     background(50);
     textSize(60);
     fill(0);
@@ -49,7 +64,8 @@ function draw(){
         console.log("difficulty error!")
         break;
     }
-  } else if (screen == 1) {
+    puck.setSpeed();
+  } else if (screenS == 1) {
     background(0);
     puck.isTouching(player);
     puck.isTouching(computer);
@@ -68,5 +84,19 @@ function draw(){
     textSize(32);
     text(puck.playerScore, 35, 30);
     text(puck.computerScore, width - 35, 30);
+    puck.checkScore();
+  } else if (screenS == 2) {
+    background(25);
+    textSize(60);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("You Win!\nClick to play again", width/2, height/2);
+
+  } else if (screenS == 3) {
+    background(25);
+    textSize(60);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("You Lose!\nClick to play again", width/2, height/2);
   }
 }
