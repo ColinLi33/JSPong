@@ -101,13 +101,8 @@
           this.dir = -1.308;
         if (this.dir >= 1.308)
           this.dir = 1.308;
-<<<<<<< HEAD
         this.x = p.x + p.w/2 + this.r;
-=======
       //  this.x = p.x + p.w/2 + this.r;
->>>>>>> f51ab45e16957bf455385f21ddcbbe3d2912c472
-
-
       } else {
       //  this.x = p.x - p.w - 2;
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
