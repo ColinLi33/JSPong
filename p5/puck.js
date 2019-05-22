@@ -131,14 +131,14 @@
 
     this.isTouching = function(p){
       if(p === player){
-        if(this.x - this.r  <= p.x + p.w/2 + 15 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
+        if(this.x - this.r  <= p.x + p.w/2 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
           this.direction(this.y, p.y, p);
           numPlayerHits++;
           console.log('playerHit: ' + numCompHits);
         }
       }
       if(p === computer){
-        if(this.x + this.r >= p.x - p.w/2 - 15 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
+        if(this.x + this.r >= p.x - p.w/2 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
           this.direction(this.y, p.y, p);
           numCompHits++;
           console.log('computerHit: ' + numCompHits);
