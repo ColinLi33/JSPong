@@ -7,19 +7,24 @@
     this.y = heightWindow / 2;
     this.xspeed = 12; //never negative
     this.yspeed = -12; //offset stuff
-    if(getDifficulty() == 0){
-      this.xspeed = 8;
-      this.yspeed = -8;
-    }
-    else if(getDifficulty() == 2){
-      this.xspeed = 15;
-      this.yspeed = -15;
-    }
     this.r = 12;
     this.dir = (3 * PI / 4); // [0, 2pi)
     this.section;
     this.playerScore = 0;
     this.computerScore = 0;
+
+    this.setSpeed = function(){
+      if(getDifficulty() == 0){
+        this.xspeed = 8;
+        this.yspeed = -8;
+        console.log('test');
+      }
+      else if(getDifficulty() == 2){
+        this.xspeed = 15;
+        this.yspeed = -15;
+        console.log('hi');
+      }
+    }
 
     this.show = function(){
      fill(255);

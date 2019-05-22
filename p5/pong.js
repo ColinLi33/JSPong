@@ -39,6 +39,7 @@ function keyPressed(){
     difficulty -= 1;
   } else if (keyCode === RIGHT_ARROW && difficulty < 2 && screenS == 0) {
     difficulty += 1;
+    console.log(difficulty);
   }
 }
 
@@ -63,6 +64,7 @@ function draw(){
         console.log("difficulty error!")
         break;
     }
+    puck.setSpeed();
   } else if (screenS == 1) {
     background(0);
     puck.isTouching(player);
