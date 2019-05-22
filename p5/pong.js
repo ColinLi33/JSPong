@@ -12,6 +12,7 @@ function setup(){
   player = new Paddle(true);
   computer = new Paddle(false);
   puck = new Puck();
+  png = loadImage("greenline.png");
 }
 
 function mouseClicked(){
@@ -67,6 +68,7 @@ function draw(){
     puck.setSpeed();
   } else if (screenS == 1) {
     background(0);
+    image(png, 0, 0);
     puck.isTouching(player);
     puck.isTouching(computer);
 
