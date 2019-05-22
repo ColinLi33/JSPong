@@ -135,7 +135,7 @@
         }
       }
       if(p === computer){
-        if(this.x + this.r >= p.x - p.w/2 && this.y + this.r < p.y + p.h/2 + 10 && this.y - this.r > p.y - p.h/2 - 10){
+        if(this.x + this.r >= p.x - p.w/2 - 15 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
           this.direction(this.y, p.y, p);
           numCompHits++;
           console.log('computerHit: ' + numCompHits);
