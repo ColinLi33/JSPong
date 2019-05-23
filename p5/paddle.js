@@ -41,7 +41,7 @@ function Paddle(player){
          break;
        case 2:
          this.MAXSPEED = 15;
-         this.speed = (p.y - this.y)/4.75;
+         this.speed = (p.y - this.y)/5.25;
          break;
        default:
          System.out.println("AI speed error");
