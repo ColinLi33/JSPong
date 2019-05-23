@@ -101,14 +101,7 @@
           this.dir = -1.308;
         if (this.dir >= 1.308)
           this.dir = 1.308;
-        this.x = p.x + p.w/2 + this.r;
-
-      //  this.x = p.x + p.w/2 + this.r;
-
-
-
       } else {
-      //  this.x = p.x - p.w - 2;
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
           this.dir = 2 * PI / 3 + this.dir * -.1;
         }else if(puckY > paddleY - 30 && puckY <= paddleY - 10){ //21-40
@@ -124,7 +117,6 @@
           this.dir = PI-1.308;
         if (this.dir >= PI+1.308)
           this.dir = 1.308;
-      //  this.x = p.x - p.w/2 - this.r;
       }
 
     }
