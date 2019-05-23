@@ -72,8 +72,12 @@
     this.checkScore = function(){
       if(this.playerScore == 10){
         setScreen(2);
+        this.playerScore = 0;
+        this.computerScore = 0;
       } else if(this.computerScore == 10){
         setScreen(3);
+        this.playerScore = 0;
+        this.computerScore = 0;
       }
     }
 
