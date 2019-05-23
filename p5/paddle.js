@@ -50,14 +50,11 @@ function Paddle(player){
     if(this.speed > this.MAXSPEED)
       this.speed = this.MAXSPEED;
     this.y += this.speed;
+    this.constrainedY = constrain(this.y, 50, height - 50);
+    this.y = this.constrainedY;
   }
-  this.move = function(p){
-    if(p === player){
+  this.move = function(){
       this.constrainedY = constrain(mouseY, 50, height - 50);
       this.y = this.constrainedY;
-    } else {
-      this.constrainedY = constrain(this.y, 50, height - 50);
-      this.y = this.constrainedY;
-    }
   }
 }
