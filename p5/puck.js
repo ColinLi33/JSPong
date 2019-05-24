@@ -30,7 +30,7 @@
       else if(getDifficulty() == 2){
         this.xspeed = 15;
         this.yspeed = -15;
-        this.defaultSpeed = 8;
+        this.defaultSpeed = 15;
       }
     }
 
@@ -46,7 +46,7 @@
       this.x = widthWindow/2;
       this.y = heightWindow/2;
       this.xspeed = this.defaultSpeed;
-      this.xspeed = this.defaultSpeed * -1;
+      this.yspeed = this.defaultSpeed * -1;
       if((Math.random() * 2) == 0){
          this.dir = Math.random() * 2 * PI / 4 + 2 * PI / 4;
       } else {
@@ -128,7 +128,7 @@
           this.dir = 1.308;
       }
       this.xspeed += .4;
-      this.yspeed += .4;
+      this.yspeed -= .4;
 
     }
 
