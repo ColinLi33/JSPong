@@ -122,6 +122,8 @@
         if (this.dir >= PI+1.308)
           this.dir = 1.308;
       }
+      this.xspeed += .4;
+      this.yspeed += .4;
 
     }
 
