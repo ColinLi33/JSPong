@@ -14,6 +14,7 @@
     this.section;
     this.playerScore = 0;
     this.computerScore = 0;
+    this.defaultSpeed = 12;
 
     this.startGame = function(){
       this.playerScore = 0;
@@ -24,10 +25,12 @@
       if(getDifficulty() == 0){
         this.xspeed = 8;
         this.yspeed = -8;
+        this.defaultSpeed = 8;
       }
       else if(getDifficulty() == 2){
         this.xspeed = 15;
         this.yspeed = -15;
+        this.defaultSpeed = 8;
       }
     }
 
@@ -42,6 +45,8 @@
     this.reset = function(){
       this.x = widthWindow/2;
       this.y = heightWindow/2;
+      this.xspeed = this.defaultSpeed;
+      this.xspeed = this.defaultSpeed * -1;
       if((Math.random() * 2) == 0){
          this.dir = Math.random() * 2 * PI / 4 + 2 * PI / 4;
       } else {
