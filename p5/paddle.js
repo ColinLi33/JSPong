@@ -32,8 +32,8 @@ function Paddle(player){
     this.MAXSPEED = 0.0;
     switch (difficulty){
        case 0:
-         this.MAXSPEED = 7;
-         this.speed = (p.y - this.y)/11;
+         this.MAXSPEED = 6;
+         this.speed = (p.y - this.y)/15;
          break;
        case 1:
          this.MAXSPEED = 10;
