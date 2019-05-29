@@ -93,18 +93,22 @@
     }
 
     this.direction = function(puckY, paddleY, p){
+      if(this.dir >= 2*PI)
+        this.dir = this.dir-2*PI
+      if(this.dir <= -2*PI)
+        this.dir = this.dir+2*PI
       if(p === player){
       //  this.x = p.x + p.w + 2;
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
-          this.dir = PI / 3 + this.dir * -.1;
+          this.dir = PI / 3 - Math.abs(this.dir * .1);
         }else if(puckY > paddleY - 30 && puckY <= paddleY - 10){ //21-40
-          this.dir = PI / 6 + this.dir * -.1;
+          this.dir = PI / 6 - Math.abs(this.dir * .1);
         }else if(puckY > paddleY - 10 && puckY <= paddleY + 10){ //41-60
           this.dir = 0 + this.dir * -.1;
         }else if(puckY > paddleY + 10 && puckY <= paddleY + 30){ //61-80
-          this.dir = -PI / 6 + this.dir * .1;
+          this.dir = -PI / 6 + Math.abs(this.dir * .1);
         }else if(puckY > paddleY + 30 && puckY <= paddleY + 53){ //81-100
-          this.dir = -PI / 3 + this.dir * .1;
+          this.dir = -PI / 3 + Math.abs(this.dir * .1);
         }
         if(this.dir <= -1.308)
           this.dir = -1.308;
@@ -112,15 +116,15 @@
           this.dir = 1.308;
       } else {
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
-          this.dir = 2 * PI / 3 + this.dir * -.1;
+          this.dir = 2 * PI / 3 - Math.abs(this.dir * .1);
         }else if(puckY > paddleY - 30 && puckY <= paddleY - 10){ //21-40
-          this.dir = 5 * PI / 6 + this.dir * -.1;
+          this.dir = 5 * PI / 6 - Math.abs(this.dir * .1);
         }else if(puckY > paddleY - 10 && puckY <= paddleY + 10){ //41-60
           this.dir = PI + this.dir * -.1;
         }else if(puckY > paddleY + 10 && puckY <= paddleY + 30){ //61-80
-          this.dir = 7 * PI / 6 + this.dir * .1;
+          this.dir = 7 * PI / 6 + Math.abs(this.dir * .1);;
         }else if(puckY > paddleY + 30 && puckY <= paddleY + 53){ //81-100
-          this.dir = 4 * PI / 3 + this.dir * .1;
+          this.dir = 4 * PI / 3 + Math.abs(this.dir * .1);
         }
         if(this.dir <= PI-1.308)
           this.dir = PI-1.308;
