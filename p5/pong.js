@@ -86,9 +86,9 @@ function draw(){
     //  player.move();
     player.AI(difficulty, puck);
 
-      if(Math.cos(puck.dir) >= 0){
+     // if(Math.cos(puck.dir) >= 0){
         computer.AI(difficulty, puck);
-      }
+     // }
 
       puck.show();
       puck.isOnEdge();
