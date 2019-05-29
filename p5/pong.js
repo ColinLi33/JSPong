@@ -84,7 +84,7 @@ function draw(){
       player.show();
       computer.show();
     //  player.move();
-    computer.AI(difficulty, puck);
+    player.AI(difficulty, puck);
 
       if(Math.cos(puck.dir) >= 0){
         computer.AI(difficulty, puck);
