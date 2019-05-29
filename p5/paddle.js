@@ -45,6 +45,7 @@ function Paddle(player){
          break;
        default:
          System.out.println("AI speed error");
+         break;
     }
 
     if(this.speed > this.MAXSPEED)
