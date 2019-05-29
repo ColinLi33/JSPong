@@ -27,7 +27,7 @@
         this.yspeed = -8;
         this.defaultSpeed = 8;
       }
-      else if(getDifficulty() == 2){
+      else if(getDifficulty() == 2 || getDifficulty() == 3){
         this.xspeed = 15;
         this.yspeed = -15;
         this.defaultSpeed = 15;
