@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const socket = require('socket.io')
+//const socket = require('socket.io')
 app.use(express.static('p5'))
 let paddleCount = 0;
 let socketObj = {
@@ -21,7 +21,7 @@ let server = app.listen(process.env.PORT || 3000, function(){
 app.get('/', function (req, res) {
   res.render(__dirname + '/index.html');
 })
-
+/*
 
 let io  = socket(server);
 io.on('connection', function(socket){
@@ -38,4 +38,4 @@ io.on('connection', function(socket){
     }
   });
 
-})
+}) */

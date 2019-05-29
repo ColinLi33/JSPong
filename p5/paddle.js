@@ -1,8 +1,8 @@
-let socket = io.connect("https://pongmasterserver.herokuapp.com/");
+/*let socket = io.connect("https://pongmasterserver.herokuapp.com/");
 socket.on('whoAreYou', function(){
   console.log('bruh')
   socket.emit('imaPaddle');
-})
+})*/
 
 var widthWindow = 1200;
 var heightWindow = 600;
