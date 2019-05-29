@@ -62,6 +62,8 @@ function draw(){
       case 2:
         text("Difficulty: Hard", width/2, heightWindow - 50);
         break;
+      case 3:
+        text("Difficulty: Impossible", width/2, heightWindow - 50))
       default:
         console.log("difficulty error!")
         break;
