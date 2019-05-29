@@ -51,7 +51,7 @@ function draw(){
     background(50);
     textSize(60);
     textAlign(CENTER, CENTER);
-    text("Computer Science Final \nPong \nBy Colin Li & Luke Fahrney \nClick to Start", width/2, heightWindow - 400);
+    text("Computer Science Final \nPong \nBy Colin Li & Luke Fahrney \nwith help from Eddie Kim! \nClick to Start", width/2, heightWindow - 400);
     switch(difficulty){
       case 0:
         text("Difficulty: Easy", width/2, heightWindow - 50);
@@ -63,7 +63,7 @@ function draw(){
         text("Difficulty: Hard", width/2, heightWindow - 50);
         break;
       case 3:
-        text("Difficulty: Impossible", width/2, heightWindow - 50))
+        text("Difficulty: Impossible", width/2, heightWindow - 50)
       default:
         console.log("difficulty error!")
         break;
