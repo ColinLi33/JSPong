@@ -29,6 +29,12 @@ function Paddle(player){
     rect(this.x, this.y, this.w, this.h);
   }
   this.AI = function(difficulty, p){
+    if(difficulty == 3)
+    {
+      this.y = p.y;
+    }
+    else {
+
     this.MAXSPEED = 0.0;
     switch (difficulty){
        case 0:
@@ -43,9 +49,9 @@ function Paddle(player){
          this.MAXSPEED = 15;
          this.speed = (p.y - this.y)/5.25;
          break;
-       case 3:
-         this.y = p.y;
-         break;
+    //   case 3:
+  //       this.y = p.y;
+    //     break;
        default:
          System.out.println("AI speed error");
          break;
@@ -56,6 +62,7 @@ function Paddle(player){
     this.y += this.speed;
     this.constrainedY = constrain(this.y, 50, height - 50);
     this.y = this.constrainedY;
+  }
   }
   this.move = function(){
       this.constrainedY = constrain(mouseY, 50, height - 50);

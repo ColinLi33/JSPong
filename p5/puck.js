@@ -15,6 +15,7 @@
     this.playerScore = 0;
     this.computerScore = 0;
     this.defaultSpeed = 12;
+    this.highScore = 0;
 
     this.startGame = function(){
       this.playerScore = 0;
@@ -63,7 +64,8 @@
       if (this.y < 0 + 12 || this.y > heightWindow - 12){
         this.hitTopOrBottom();
       }
-
+      if(getDifficulty() !== 3)
+      {
       if (this.x < 0 || this.x > widthWindow){
         if(this.x < 0){
           this.computerScore++;
@@ -72,9 +74,20 @@
         }
         this.reset();
       }
+      }
+      else {
+      if(this.x < 0){
+        if(this.playerScore > this.highScore){
+          this.highScore = this.playerScore;
+        }
+        this.playerScore = 0;
+        this.reset();
+      }
+    }
     }
 
     this.checkScore = function(){
+      if(getDifficulty() !== 3){
       if(this.playerScore == 10){
         setScreen(2);
         this.playerScore = 0;
@@ -84,6 +97,7 @@
         this.playerScore = 0;
         this.computerScore = 0;
       }
+    }
     }
 
     this.hitTopOrBottom = function(){
@@ -98,6 +112,8 @@
       if(this.dir <= -2*PI)
         this.dir = this.dir+2*PI
       if(p === player){
+        if(getDifficulty() == 3)
+          this.playerScore += 10;
       //  this.x = p.x + p.w + 2;
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
           this.dir = PI / 3 - Math.abs(this.dir * .1);

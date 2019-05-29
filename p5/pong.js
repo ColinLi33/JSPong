@@ -39,7 +39,7 @@ function getScreen(){
 function keyPressed(){
   if (keyCode === LEFT_ARROW && difficulty > 0 && screenS == 0) {
     difficulty -= 1;
-  } else if (keyCode === RIGHT_ARROW && difficulty < 2 && screenS == 0) {
+  } else if (keyCode === RIGHT_ARROW && difficulty < 3 && screenS == 0) {
     difficulty += 1;
     console.log(difficulty);
   }
@@ -51,6 +51,7 @@ function draw(){
     background(50);
     textSize(60);
     textAlign(CENTER, CENTER);
+    textFont('Georgia');
     text("Computer Science Final \nPong \nBy Colin Li & Luke Fahrney \nClick to Start", width/2, heightWindow - 400);
     switch(difficulty){
       case 0:
@@ -63,7 +64,8 @@ function draw(){
         text("Difficulty: Hard", width/2, heightWindow - 50);
         break;
       case 3:
-        text("Difficulty: Impossible", width/2, heightWindow - 50))
+        text("Difficulty: Impossible", width/2, heightWindow - 50);
+        break;
       default:
         console.log("difficulty error!")
         break;
@@ -91,6 +93,8 @@ function draw(){
       puck.move();
       textSize(32);
       text(puck.playerScore, 35, 30);
+      if(getDifficulty() == 3)
+        text("HIGH SCORE: " + puck.highScore, 200, 30)
       text(puck.computerScore, width - 35, 30);
       puck.checkScore();
   } else if (screenS == 2) {
