@@ -1,9 +1,3 @@
-let socket = io.connect("http://localhost:3000");
-socket.on('whoAreYou', function(){
-  console.log('bruh')
-  socket.emit('imaPaddle');
-})
-
 var widthWindow = 1200;
 var heightWindow = 600;
 
