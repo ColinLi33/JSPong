@@ -59,7 +59,7 @@ socket.on('highscore', function(score){
       this.y = heightWindow/2;
       this.xspeed = this.defaultSpeed;
       this.yspeed = this.defaultSpeed * -1;
-      paddle.resetH();
+    //  pong.resetH();
       if((Math.random() * 2) > 1){
         this.dir = Math.random() * 2 * PI / 4 + 3 * PI / 4;
     } else {
@@ -147,7 +147,7 @@ socket.on('highscore', function(score){
           this.dir = -1.308;
         if (this.dir >= 1.308)
           this.dir = 1.308;
-        p.h = p.h*0.1;
+        p.h = p.h*0.9;
       } else {
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
           this.dir = 2 * PI / 3 - Math.abs(this.dir * .1);
