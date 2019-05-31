@@ -41,7 +41,6 @@ function keyPressed(){
     difficulty -= 1;
   } else if (keyCode === RIGHT_ARROW && difficulty < 3 && screenS == 0) {
     difficulty += 1;
-    console.log(difficulty);
   }
 }
 
@@ -95,6 +94,8 @@ function draw(){
       textSize(32);
       text(puck.playerScore, 35, 30);
       if(getDifficulty() == 3)
+        var bruh = new Puck();
+        puck.highScore = bruh.highScore;
         text("HIGH SCORE: " + puck.highScore, 200, 30)
       text(puck.computerScore, width - 35, 30);
       puck.checkScore();

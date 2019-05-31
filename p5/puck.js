@@ -1,8 +1,19 @@
+var highScore;
+
+let socket = io.connect("http://localhost:3000/");
+socket.on('highscore', function(score){
+  console.log('score' + score);
+  highScore = score;
+  Puck.highScore = highScore;
+
+})
+
   const PI = Math.PI;
   var widthWindow = 1200;
   var heightWindow = 600;
   var numPlayerHits = 0;
   var numCompHits = 0;
+
 
   function Puck(){
     this.x = widthWindow  / 2;
@@ -15,7 +26,7 @@
     this.playerScore = 0;
     this.computerScore = 0;
     this.defaultSpeed = 12;
-    this.highScore = 0;
+    this.highScore = highScore;
 
     this.startGame = function(){
       this.playerScore = 0;
@@ -79,12 +90,16 @@
       if(this.x < 0){
         if(this.playerScore > this.highScore){
           this.highScore = this.playerScore;
+          socket.emit('updateHighScore', this.highScore);
+          this.highScore = highScore;
         }
         this.playerScore = 0;
         this.reset();
       }
     }
     }
+
+
 
     this.checkScore = function(){
       if(getDifficulty() !== 3){
