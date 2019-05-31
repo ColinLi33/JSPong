@@ -29,6 +29,9 @@ function Paddle(player){
   this.getH = function() {
     return this.h;
   }
+  this.resetH = function() {
+    this.h = 100;
+  }
   this.show = function(){
     fill('rgb(0,255,0)');
     rectMode(CENTER);

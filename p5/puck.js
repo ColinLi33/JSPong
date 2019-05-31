@@ -48,10 +48,11 @@
       this.y = heightWindow/2;
       this.xspeed = this.defaultSpeed;
       this.yspeed = this.defaultSpeed * -1;
-      if((Math.random() * 2) == 0){
-         this.dir = Math.random() * 2 * PI / 4 + 2 * PI / 4;
-      } else {
-         this.dir = Math.random() * -PI / 3 + PI / 4 ;
+      paddle.resetH();
+      if((Math.random() * 2) > 1){
+        this.dir = Math.random() * 2 * PI / 4 + 3 * PI / 4;
+    } else {
+        this.dir = Math.random() * PI / 3 - PI / 6 ;
       }
     }
 
@@ -103,10 +104,11 @@
     this.hitTopOrBottom = function(){
     //  xspeed++;
       //yspeed--;
+      if(this.x < 1160 && this.x > 40)
         this.dir = 2 * PI - this.dir;
     }
 
-    this.direction = function(puckY, paddleY, p){
+    this.direction = function(puckY, paddleY, p, h){
       if(this.dir >= 2*PI)
         this.dir = this.dir-2*PI
       if(this.dir <= -2*PI)
@@ -115,21 +117,22 @@
         if(getDifficulty() == 3)
           this.playerScore += 10;
       //  this.x = p.x + p.w + 2;
-        if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
+        if(puckY >= paddleY - (h+3) && puckY <= paddleY - (0.6*h)){ //0-20
           this.dir = PI / 3 - Math.abs(this.dir * .1);
-        }else if(puckY > paddleY - 30 && puckY <= paddleY - 10){ //21-40
+        }else if(puckY > paddleY - (0.6*h) && puckY <= paddleY - (0.2*h)){ //21-40
           this.dir = PI / 6 - Math.abs(this.dir * .1);
-        }else if(puckY > paddleY - 10 && puckY <= paddleY + 10){ //41-60
+        }else if(puckY > paddleY - (0.2*h) && puckY <= paddleY + (0.2*h)){ //41-60
           this.dir = 0 + this.dir * -.1;
-        }else if(puckY > paddleY + 10 && puckY <= paddleY + 30){ //61-80
+        }else if(puckY > paddleY + (0.2*h) && puckY <= paddleY + (0.6*h)){ //61-80
           this.dir = -PI / 6 + Math.abs(this.dir * .1);
-        }else if(puckY > paddleY + 30 && puckY <= paddleY + 53){ //81-100
+        }else if(puckY > paddleY + (0.6*h) && puckY <= paddleY + (h+3)){ //81-100
           this.dir = -PI / 3 + Math.abs(this.dir * .1);
         }
         if(this.dir <= -1.308)
           this.dir = -1.308;
         if (this.dir >= 1.308)
           this.dir = 1.308;
+        p.h = p.h*0.1;
       } else {
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
           this.dir = 2 * PI / 3 - Math.abs(this.dir * .1);
@@ -155,14 +158,14 @@
     this.isTouching = function(p){
       if(p === player){
         if(this.x - this.r  <= p.x + p.w/2 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
-          this.direction(this.y, p.y, p);
+          this.direction(this.y, p.y, p, p.h);
           numPlayerHits++;
           console.log('playerHit: ' + numCompHits);
         }
       }
       if(p === computer){
         if(this.x + this.r >= p.x - p.w/2 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
-          this.direction(this.y, p.y, p);
+          this.direction(this.y, p.y, p.h);
           numCompHits++;
           console.log('computerHit: ' + numCompHits);
         }
