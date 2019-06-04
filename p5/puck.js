@@ -59,7 +59,7 @@ socket.on('highscore', function(score){
       this.y = heightWindow/2;
       this.xspeed = this.defaultSpeed;
       this.yspeed = this.defaultSpeed * -1;
-    //  pong.resetH();
+      paddle.resetH();
       if((Math.random() * 2) > 1){
         this.dir = Math.random() * 2 * PI / 4 + 3 * PI / 4;
     } else {
