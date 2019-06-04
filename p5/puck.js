@@ -1,8 +1,6 @@
 var highScore;
 
-//let socket = io.connect("https://pongmasterserver.herokuapp.com");
-let socket = io.connect("http://localhost:3000");
-
+let socket = io.connect("https://pongmasterserver.herokuapp.com");
 socket.on('highscore', function(score){
   console.log('score' + score);
   highScore = score;
@@ -149,14 +147,15 @@ socket.on('highscore', function(score){
           this.dir = -1.308;
         if (this.dir >= 1.308)
           this.dir = 1.308;
-<<<<<<< HEAD
-        p.h = p.h*0.9;
-=======
-        //p.h = p.h*0.9;
->>>>>>> 0a2297ed696786235a00e9578b25d0c5b4a04404
+        if(getDifficulty() == 2)
+          p.h = p.h*0.95;
+        else if(getDifficulty() == 1)
+          p.h = p.h*0.97;
+        else if(getDifficulty() == 0)
+          p.h = p.h*0.985;
       } else {
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
-          this.dir = 2 * PI / 3 - Math.abs(this.dir * .1);
+          this.dir = 2 * PI / 3 - Math.abs(this.dir * .05);
         }else if(puckY > paddleY - 30 && puckY <= paddleY - 10){ //21-40
           this.dir = 5 * PI / 6 - Math.abs(this.dir * .1);
         }else if(puckY > paddleY - 10 && puckY <= paddleY + 10){ //41-60
