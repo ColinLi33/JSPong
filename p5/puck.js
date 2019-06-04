@@ -147,7 +147,11 @@ socket.on('highscore', function(score){
           this.dir = -1.308;
         if (this.dir >= 1.308)
           this.dir = 1.308;
+<<<<<<< HEAD
         p.h = p.h*0.9;
+=======
+        //p.h = p.h*0.9;
+>>>>>>> 0a2297ed696786235a00e9578b25d0c5b4a04404
       } else {
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
           this.dir = 2 * PI / 3 - Math.abs(this.dir * .1);
