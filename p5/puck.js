@@ -132,16 +132,22 @@ socket.on('highscore', function(score){
         if(getDifficulty() == 3)
           this.playerScore += 10;
       //  this.x = p.x + p.w + 2;
-        if(puckY >= paddleY - (h+3) && puckY <= paddleY - (0.6*h)){ //0-20
+      console.log(p.h);
+        if(puckY >= paddleY - p.h/2 - 3 && puckY <= paddleY - (0.3*p.h)){ //0-20
           this.dir = PI / 3 - Math.abs(this.dir * .1);
-        }else if(puckY > paddleY - (0.6*h) && puckY <= paddleY - (0.2*h)){ //21-40
+          console.log('top');
+        }else if(puckY > paddleY - (0.3*p.h) && puckY <= paddleY - (0.1*p.h)){ //21-40
           this.dir = PI / 6 - Math.abs(this.dir * .1);
-        }else if(puckY > paddleY - (0.2*h) && puckY <= paddleY + (0.2*h)){ //41-60
+          console.log('2');
+        }else if(puckY > paddleY - (0.1*p.h) && puckY <= paddleY + (0.1*p.h)){ //41-60
           this.dir = 0 + this.dir * -.1;
-        }else if(puckY > paddleY + (0.2*h) && puckY <= paddleY + (0.6*h)){ //61-80
+          console.log('3');
+        }else if(puckY > paddleY + (0.1*p.h) && puckY <= paddleY + (0.3*p.h)){ //61-80
           this.dir = -PI / 6 + Math.abs(this.dir * .1);
-        }else if(puckY > paddleY + (0.6*h) && puckY <= paddleY + (h+3)){ //81-100
+          console.log('4');
+        }else if(puckY > paddleY + (0.3*p.h) && puckY <= paddleY + p.h/2 + 3){ //81-100
           this.dir = -PI / 3 + Math.abs(this.dir * .1);
+          console.log('bottom');
         }
         if(this.dir <= -1.308)
           this.dir = -1.308;
