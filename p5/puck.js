@@ -153,9 +153,6 @@ socket.on('highscore', function(score){
           p.h = p.h*0.97;
         else if(getDifficulty() == 0)
           p.h = p.h*0.985;
-        if(getDifficulty() != 3){
-          p.h *= 0.95;
-        }
       } else {
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
           this.dir = 2 * PI / 3 - Math.abs(this.dir * .05);
