@@ -94,12 +94,13 @@ function draw(){
       puck.move();
       textSize(32);
       text(puck.playerScore, 35, 30);
-      if(getDifficulty() == 3)
+      if(getDifficulty() == 3){
         var bruh = new Puck();
         puck.highScore = bruh.highScore;
         text("HIGH SCORE: " + puck.highScore, 200, 30)
-      text(puck.computerScore, width - 35, 30);
-      puck.checkScore();
+        text(puck.computerScore, width - 35, 30);
+        puck.checkScore();
+      }
   } else if (screenS == 2) {
       background(25);
       textSize(60);

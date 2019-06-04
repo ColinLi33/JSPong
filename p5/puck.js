@@ -1,6 +1,8 @@
 var highScore;
 
-let socket = io.connect("https://pongmasterserver.herokuapp.com");
+//let socket = io.connect("https://pongmasterserver.herokuapp.com");
+let socket = io.connect("http://localhost:3000");
+
 socket.on('highscore', function(score){
   console.log('score' + score);
   highScore = score;
