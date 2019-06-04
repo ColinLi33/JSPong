@@ -99,14 +99,11 @@ function draw(){
         var bruh = new Puck();
         puck.highScore = bruh.highScore;
         text("HIGH SCORE: " + puck.highScore, 200, 30)
-<<<<<<< HEAD
       }
       text(puck.computerScore, width - 35, 30);
       puck.checkScore();
         text(puck.computerScore, width - 35, 30);
         puck.checkScore();
-=======
->>>>>>> ebe635100173755beece91ba70f3403d7447e56b
       }
      else if (screenS == 2) {
       background(25);
