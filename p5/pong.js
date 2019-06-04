@@ -35,7 +35,6 @@ function getScreen(){
   return screenS;
 }
 
-
 function keyPressed(){
   if (keyCode === LEFT_ARROW && difficulty > 0 && screenS == 0) {
     difficulty -= 1;
@@ -70,7 +69,7 @@ function draw(){
         console.log("difficulty error!")
         break;
     }
-    puck.setSpeed();
+    puck.setSpeed(player);
   } else if (screenS == 1) {
       background(0);
       fill('rgb(0,255,0)');
@@ -94,12 +93,12 @@ function draw(){
       puck.move();
       textSize(32);
       text(puck.playerScore, 35, 30);
+      text(puck.computerScore, width - 35, 30);
+      puck.checkScore();
       if(getDifficulty() == 3){
         var bruh = new Puck();
         puck.highScore = bruh.highScore;
         text("HIGH SCORE: " + puck.highScore, 200, 30)
-        text(puck.computerScore, width - 35, 30);
-        puck.checkScore();
       }
   } else if (screenS == 2) {
       background(25);

@@ -15,6 +15,7 @@ socket.on('highscore', function(score){
   var heightWindow = 600;
   var numPlayerHits = 0;
   var numCompHits = 0;
+  var playerPaddle;
 
 
   function Puck(){
@@ -35,7 +36,8 @@ socket.on('highscore', function(score){
       this.computerScore = 0;
     }
 
-    this.setSpeed = function(){
+    this.setSpeed = function(p){
+      playerPaddle = p;
       if(getDifficulty() == 0){
         this.xspeed = 8;
         this.yspeed = -8;
@@ -61,7 +63,7 @@ socket.on('highscore', function(score){
       this.y = heightWindow/2;
       this.xspeed = this.defaultSpeed;
       this.yspeed = this.defaultSpeed * -1;
-      paddle.resetH();
+      playerPaddle.resetH();
       if((Math.random() * 2) > 1){
         this.dir = Math.random() * 2 * PI / 4 + 3 * PI / 4;
     } else {
@@ -119,8 +121,6 @@ socket.on('highscore', function(score){
     }
 
     this.hitTopOrBottom = function(){
-    //  xspeed++;
-      //yspeed--;
       if(this.x < 1160 && this.x > 40)
         this.dir = 2 * PI - this.dir;
     }
@@ -149,7 +149,9 @@ socket.on('highscore', function(score){
           this.dir = -1.308;
         if (this.dir >= 1.308)
           this.dir = 1.308;
-        //p.h = p.h*0.9;
+        if(getDifficulty() != 3){
+          p.h *= 0.95;
+        }
       } else {
         if(puckY >= paddleY - 53 && puckY <= paddleY - 30){ //0-20
           this.dir = 2 * PI / 3 - Math.abs(this.dir * .1);
@@ -162,10 +164,14 @@ socket.on('highscore', function(score){
         }else if(puckY > paddleY + 30 && puckY <= paddleY + 53){ //81-100
           this.dir = 4 * PI / 3 + Math.abs(this.dir * .1);
         }
-        if(this.dir <= PI-1.308)
+        if(this.dir <= PI-1.308){
           this.dir = PI-1.308;
-        if (this.dir >= PI+1.308)
+          console.log('hi');
+        }
+        if (this.dir >= PI+1.308){
           this.dir = 1.308;
+          console.log('hi');
+        }
       }
       this.xspeed += .4;
       this.yspeed -= .4;
@@ -177,14 +183,12 @@ socket.on('highscore', function(score){
         if(this.x - this.r  <= p.x + p.w/2 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
           this.direction(this.y, p.y, p, p.h);
           numPlayerHits++;
-          console.log('playerHit: ' + numCompHits);
         }
       }
       if(p === computer){
         if(this.x + this.r >= p.x - p.w/2 && this.y + this.r <= p.y + p.h/2 + 15 && this.y - this.r >= p.y - p.h/2 - 15){
           this.direction(this.y, p.y, p.h);
           numCompHits++;
-          console.log('computerHit: ' + numCompHits);
         }
       }
     }
