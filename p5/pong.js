@@ -98,9 +98,15 @@ function draw(){
         var bruh = new Puck();
         puck.highScore = bruh.highScore;
         text("HIGH SCORE: " + puck.highScore, 200, 30)
+<<<<<<< HEAD
       }
       text(puck.computerScore, width - 35, 30);
       puck.checkScore();
+=======
+        text(puck.computerScore, width - 35, 30);
+        puck.checkScore();
+      }
+>>>>>>> dd0e1537fbf6e7441672af3e6b56a13b66c33a9c
   } else if (screenS == 2) {
       background(25);
       textSize(60);
